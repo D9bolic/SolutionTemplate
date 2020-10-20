@@ -2,6 +2,7 @@
 
 namespace TicketManagement.UnitTests
 {
+    [TestFixture]
     public class Class1
     {
         [Test]
