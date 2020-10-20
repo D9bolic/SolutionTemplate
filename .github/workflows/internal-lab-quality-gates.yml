@@ -28,4 +28,4 @@ jobs:
         env:
           Platform: x64
       - name: Unit tests
-        run: vstest.console.exe  D:\a\SolutionTemplate\SolutionTemplate\test\TicketManagement.UnitTests\bin\${{ matrix.configuration }}\TicketManagement.UnitTests.dll 
+        run: vstest.console test\TicketManagement.UnitTests\bin\${{ matrix.configuration }}\TicketManagement.UnitTests.dll 
