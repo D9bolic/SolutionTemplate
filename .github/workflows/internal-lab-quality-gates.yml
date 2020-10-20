@@ -1,33 +1,29 @@
-name: Build Web App
- on:
+name: CI
+
+on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master, develop ]
- 
+
 jobs:
   build:
-
     strategy:
       matrix:
-        configuration: [Debug, Release]
- 
+        configuration: [Debug, Release] 
     runs-on: windows-latest
- 
     steps:
-    - uses: actions/checkout@v1
-      name: Checkout Code     
-    - name: Setup MSBuild Path
-      uses: warrenbuckley/Setup-MSBuild@v1       
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2   
-    - name: Setup VSTest Path
-      uses: darenm/Setup-VSTest@v1	  
-    - name: Restore NuGet Packages
-      run: nuget restore TicketManagement.sln 
-    - name: Build
-      run: msbuild TicketManagement.sln /p:Configuration=$env:Configuration
-    - name: Unit tests
-      run: msbuild TicketManagement.sln /p:Configuration=$env:Configuration
-       - name: VSTest
-      run: vstest.console.exe **/TicketManagement.UnitTests.dll
+      - uses: actions/checkout@v1
+        name: Checkout Code     
+      - name: Setup MSBuild Path
+        uses: warrenbuckley/Setup-MSBuild@v1       
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.2   
+      - name: Setup VSTest Path
+        uses: darenm/Setup-VSTest@v1	  
+      - name: Restore NuGet Packages
+        run: nuget restore TicketManagement.sln 
+      - name: Build
+        run: msbuild TicketManagement.sln /p:Configuration=$env:Configuration
+      - name: Unit tests
+        run: vstest.console.exe **/TicketManagement.UnitTests.dll
