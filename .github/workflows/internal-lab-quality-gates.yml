@@ -11,7 +11,8 @@ jobs:
     strategy:
       matrix:
         configuration: [Debug] 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/windows
     services:
       msSQL:
         image: microsoft/mssql-server-windows-express
