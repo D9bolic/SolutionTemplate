@@ -24,6 +24,6 @@ jobs:
       - name: Restore NuGet Packages
         run: nuget restore TicketManagement.sln 
       - name: Build
-        run: msbuild TicketManagement.sln /p:Configuration=$env:Configuration /p:Platform="x64" /p:SkipInvalidConfigurations=true
+        run: msbuild TicketManagement.sln /p:Configuration=$env:Configuration /p:SkipInvalidConfigurations=true
       - name: Unit tests
         run: vstest.console.exe test\TicketManagement.UnitTests\bin\${{ matrix.configuration }}\TicketManagement.UnitTests.dll
