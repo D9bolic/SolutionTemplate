@@ -10,7 +10,7 @@ jobs:
   build:
     strategy:
       matrix:
-        configuration: [Debug, Release] 
+        configuration: [Debug] 
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v1
@@ -26,4 +26,4 @@ jobs:
       - name: Build
         run: msbuild TicketManagement.sln /p:Configuration=$env:Configuration /p:Platform="x64" /p:SkipInvalidConfigurations=true
       - name: Unit tests
-        run: vstest.console.exe test\TicketManagement.UnitTests\bin\debug\TicketManagement.UnitTests.dll
+        run: vstest.console.exe test\TicketManagement.UnitTests\bin\Debug\TicketManagement.UnitTests.dll
