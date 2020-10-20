@@ -12,6 +12,13 @@ jobs:
       matrix:
         configuration: [Debug] 
     runs-on: windows-latest
+    services:
+      msSQL:
+        image: microsoft/mssql-server-windows-express
+        env:
+          ACCEPT_EULA: Y
+        ports:
+          - 1433:1433
     steps:
       - uses: actions/checkout@v1
         name: Checkout Code     

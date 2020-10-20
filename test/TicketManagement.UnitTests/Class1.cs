@@ -10,11 +10,5 @@ namespace TicketManagement.UnitTests
         {
             Assert.True(true);
         }
-
-        [Test]
-        public void FailedTest()
-        {
-            Assert.False(true);
-        }
     }
 }
