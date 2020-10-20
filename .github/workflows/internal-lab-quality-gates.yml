@@ -26,4 +26,4 @@ jobs:
       - name: Build
         run: msbuild TicketManagement.sln /p:Configuration=$env:Configuration /p:Platform="x64" /p:SkipInvalidConfigurations=true
       - name: Unit tests
-        run: vstest.console.exe test\TicketManagement.UnitTests\bin\${ Configuration }\TicketManagement.UnitTests.dll
+        run: vstest.console.exe test\TicketManagement.UnitTests\bin\$env:Configuration\TicketManagement.UnitTests.dll
