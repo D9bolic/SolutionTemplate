@@ -4,7 +4,6 @@ namespace TicketManagement.UnitTests
 {
     public class Class1
     {
-        //s
         [Fact]
         public void SuccsessTest()
         {
