@@ -28,4 +28,4 @@ jobs:
         env:
           Platform: x64
       - name: Unit tests
-        run: vstest.console.exe --TestAdapterPath:"D:\a\SolutionTemplate\SolutionTemplate\test\TicketManagement.UnitTests\bin\${{ matrix.configuration }}\xunit.runner.visualstudio.testadapter.dll" D:\a\SolutionTemplate\SolutionTemplate\test\TicketManagement.UnitTests\bin\${{ matrix.configuration }}\TicketManagement.UnitTests.dll 
+        run: vstest.console.exe --TestAdapterPath:"D:\a\SolutionTemplate\SolutionTemplate\test\TicketManagement.UnitTests\bin\x64\${{ matrix.configuration }}\xunit.runner.visualstudio.testadapter.dll" **\TicketManagement.UnitTests.dll 
