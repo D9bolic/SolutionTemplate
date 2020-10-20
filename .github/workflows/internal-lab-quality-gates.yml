@@ -12,7 +12,7 @@ jobs:
       matrix:
         configuration: [Debug] 
     runs-on: ubuntu-latest
-    container: mcr.microsoft.com/windows:2004-amd64
+    container: suchja/wine:latest
     services:
       msSQL:
         image: microsoft/mssql-server-windows-express
