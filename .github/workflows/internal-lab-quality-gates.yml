@@ -11,14 +11,6 @@ jobs:
     strategy:
       matrix:
         configuration: [Debug] 
-    container: suchja/wine:latest
-    services:
-      msSQL:
-        image: mcr.microsoft.com/mssql/server:2019-latest
-        env:
-          ACCEPT_EULA: Y
-        ports:
-          - 1433:1433
     steps:
       - uses: actions/checkout@v1
         name: Checkout Code     
@@ -33,4 +25,4 @@ jobs:
       - name: Build
         run: msbuild TicketManagement.sln /p:Configuration=${{ matrix.configuration }} 
       - name: Unit tests
-        run: vstest.console test\TicketManagement.UnitTests\bin\${{ matrix.configuration }}\TicketManagement.UnitTests.dll 
+        run: vstest.console **\*.UnitTests.dll 
