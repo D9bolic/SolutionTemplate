@@ -1,17 +1,15 @@
 name: CI
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master, develop ]
 
 jobs:
-  runs-on: windows-latest
-  build:
+  build ${{ matrix.configuration }}:
     strategy:
       matrix:
-        configuration: [Debug] 
+        configuration: [Debug, Release] 
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v1
         name: Checkout Code     
@@ -27,3 +25,4 @@ jobs:
         run: msbuild TicketManagement.sln /p:Configuration=${{ matrix.configuration }} 
       - name: Unit tests
         run: vstest.console **\*.UnitTests.dll 
+    
