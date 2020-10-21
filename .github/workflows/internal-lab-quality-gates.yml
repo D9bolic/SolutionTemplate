@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         configuration: [Debug, Release] 
-    runs-on: windows-latest
+    runs-on: windowsself
     steps:
       - uses: actions/checkout@v1
         name: Checkout Code     
