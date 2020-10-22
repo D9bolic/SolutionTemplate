@@ -11,7 +11,7 @@ jobs:
         configuration: [Debug, Release] 
     runs-on: [self-hosted]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         name: Checkout Code     
       - name: setup-msbuild
         uses: microsoft/setup-msbuild@v1.0.2    
@@ -31,6 +31,16 @@ jobs:
         run: sqlpackage.exe /Action:Publish /TargetDatabaseName:"TicketManagement.Database" /TargetServerName:".\SQLEXPRESS" /SourceFile:"${{ env.GITHUB_WORKSPACE }}\src\TicketManagement.Database\bin\${{ matrix.configuration }}\TicketManagement.Database.dacpac"  /p:CreateNewDatabase="true"  
       - name: Integration tests
         run: vstest.console **\*.IntegrationTests.dll 
-    
+      - name: Integration tests
+        run: vstest.console **\*.IntegrationTests.dll 
+        
+        
+      - name: OpenCover Badge Generator
+        uses: danpetitt/open-cover-badge-generator-action@v1.0.9
+        with:
+          path-to-opencover-xml: ./test/opencover.xml
+          path-to-badges: ./
+          minimum-coverage: 75
+          repo-token: ${{ secrets.CI_TOKEN }}
     
     
