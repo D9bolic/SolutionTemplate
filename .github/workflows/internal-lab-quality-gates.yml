@@ -32,8 +32,7 @@ jobs:
       - name: Integration tests
         run: vstest.console **\*.IntegrationTests.dll 
       - name: Integration tests
-        run: vstest.console **\*.IntegrationTests.dll         
-        
+        run: vstest.console **\*.IntegrationTests.dll     
       - name: OpenCover Badge Generator
         uses: danpetitt/open-cover-badge-generator-action@v1.0.9
         with:
