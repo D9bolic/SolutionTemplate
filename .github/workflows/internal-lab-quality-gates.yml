@@ -25,4 +25,10 @@ jobs:
         run: msbuild TicketManagement.sln /p:Configuration=${{ matrix.configuration }} 
       - name: Unit tests
         run: vstest.console **\*.UnitTests.dll 
+      - name: Add sqlpackage to PATH
+        uses: coreywebber/setup-sqlpackage@v1.0.0
+      - name: Database publish
+        run: sqlpackage.exe /Action:Publish /TargetDatabaseName:"TicketManagement.Database" /TargetServerName:".\SQLEXPRESS" /SourceFile:"${{ GITHUB_WORKSPACE }}\src\TicketManagement.Database\bin\${{ matrix.configuration }}\TicketManagement.Database.dacpac"  /p:CreateNewDatabase="true"
+    
+    
     
