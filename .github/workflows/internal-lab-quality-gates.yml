@@ -13,22 +13,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Checkout Code     
-      - name: setup-msbuild
+      - name: Setup msbuild
         uses: microsoft/setup-msbuild@v1.0.2    
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.0.2   
       - name: Setup VSTest.exe
-        uses: Malcolmnixon/Setup-VSTest@v3	  
+        uses: Malcolmnixon/Setup-VSTest@v3	
+      - name: Setup sqlpackage
+        uses: coreywebber/setup-sqlpackage@v1.0.0  
       - name: Restore NuGet Packages
         run: nuget restore TicketManagement.sln 
       - name: Build
         run: msbuild TicketManagement.sln /p:Configuration=${{ matrix.configuration }} 
       - name: Unit tests
         run: vstest.console **\*.UnitTests.dll 
-      - name: Add sqlpackage to PATH
-        uses: coreywebber/setup-sqlpackage@v1.0.0
       - name: Database publish
-        run: sqlpackage.exe /Action:Publish /TargetDatabaseName:"TicketManagement.Database" /TargetServerName:".\SQLEXPRESS" /SourceFile:"${{ env.GITHUB_WORKSPACE }}\src\TicketManagement.Database\bin\${{ matrix.configuration }}\TicketManagement.Database.dacpac"  /p:CreateNewDatabase="true"  
+        run: sqlpackage.exe /Action:Publish /TargetDatabaseName:"TicketManagement.Database" /TargetServerName:".\SQLEXPRESS" /SourceFile:".\src\TicketManagement.Database\bin\${{ matrix.configuration }}\TicketManagement.Database.dacpac"  /p:CreateNewDatabase="true"  
       - name: Integration tests
         run: vstest.console **\*.IntegrationTests.dll 
       - name: Integration tests
