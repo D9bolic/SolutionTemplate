@@ -11,8 +11,6 @@ jobs:
         configuration: [Debug, Release] 
     runs-on: [self-hosted]
     steps:
-      - name: asd
-        run: echo "::set-env name=PATH::${HOME}/miniconda3/bin:${PATH}"
       - uses: actions/checkout@v1
         name: Checkout Code     
       - name: setup-msbuild
