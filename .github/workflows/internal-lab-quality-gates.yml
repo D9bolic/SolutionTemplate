@@ -28,7 +28,7 @@ jobs:
       - name: Unit tests
         run: vstest.console **\*.UnitTests.dll 
       - name: Database publish
-        run: sqlpackage.exe /Action:Publish /TargetDatabaseName:"TicketManagement.Database" /TargetServerName:".\SQLEXPRESS" /SourceFile:".\src\TicketManagement.Database\bin\${{ matrix.configuration }}\TicketManagement.Database.dacpac"  /p:CreateNewDatabase="true"  
+        run: sqlpackage.exe /Action:Publish /TargetDatabaseName:"TicketManagement.Database" /TargetServerName:"localhost\SQLEXPRESS01" /SourceFile:".\src\TicketManagement.Database\bin\${{ matrix.configuration }}\TicketManagement.Database.dacpac"  /p:CreateNewDatabase="true"  
       - name: Integration tests
         run: vstest.console **\*.IntegrationTests.dll  
     
