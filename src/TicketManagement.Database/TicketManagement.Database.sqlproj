@@ -61,6 +61,7 @@
     <Folder Include="ForeignKeys" />
     <Folder Include="Tables" />
     <Folder Include="Post" />
+    <Folder Include="StoredProcedure" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="ForeignKeys\FK_Venue_Layout.sql" />
@@ -70,6 +71,9 @@
     <Build Include="ForeignKeys\FK_Layout_Event.sql" />
     <Build Include="ForeignKeys\FK_Event_EventArea.sql" />
     <Build Include="ForeignKeys\FK_Area_EventSeat.sql" />
+    <Build Include="StoredProcedure\AddNewEvent.sql" />
+    <Build Include="StoredProcedure\DeleteEvent.sql" />
+    <Build Include="StoredProcedure\UpdateEvent.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Event.sql" />

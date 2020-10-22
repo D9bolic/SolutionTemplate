@@ -1,19 +1,20 @@
-﻿using Xunit;
+﻿using NUnit.Framework;
 
 namespace TicketManagement.UnitTests
 {
+    [TestFixture]
     public class Class1
     {
-        [Fact]
+        [Test]
         public void SuccsessTest()
         {
             Assert.True(true);
         }
 
-        [Fact]
+        [Test]
         public void FailedTest()
         {
-            Assert.False(true);
+            Assert.True(false);
         }
     }
 }

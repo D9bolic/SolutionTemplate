@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,8 +42,61 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="CustomExceptions\ModelValidationException.cs" />
+    <Compile Include="CustomExceptions\DescriptionUniqueException.cs" />
+    <Compile Include="CustomExceptions\EventHasNotSeatException.cs" />
+    <Compile Include="CustomExceptions\ItemExistenceException.cs" />
+    <Compile Include="CustomExceptions\NegativePriceException.cs" />
+    <Compile Include="CustomExceptions\NotPossitiveIdException.cs" />
+    <Compile Include="CustomExceptions\UniquePositionException.cs" />
+    <Compile Include="ValidationAttributes\NumberAttribute.cs" />
+    <Compile Include="ValidationErrorMessage.cs" />
+    <Compile Include="DTO\AreaDto.cs" />
+    <Compile Include="DTO\EventAreaDto.cs" />
+    <Compile Include="DTO\EventDto.cs" />
+    <Compile Include="DTO\EventSeatDto.cs" />
+    <Compile Include="DTO\LayoutDto.cs" />
+    <Compile Include="DTO\SeatDto.cs" />
+    <Compile Include="DTO\VenueDto.cs" />
+    <Compile Include="Extentions\DateTimeExtention.cs" />
+    <Compile Include="Mappers\AreaMapper.cs" />
+    <Compile Include="Mappers\EventAreaMapper.cs" />
+    <Compile Include="Mappers\EventMapper.cs" />
+    <Compile Include="Mappers\EventSeatMapper.cs" />
+    <Compile Include="Mappers\LayoutMapper.cs" />
+    <Compile Include="Mappers\SeatMapper.cs" />
+    <Compile Include="Mappers\VenueMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AreaService.cs" />
+    <Compile Include="Services\BaseValidationService.cs" />
+    <Compile Include="Services\EventAreaService.cs" />
+    <Compile Include="Services\EventSeatService.cs" />
+    <Compile Include="Services\EventService.cs" />
+    <Compile Include="Services\Interfaces\IAreaService.cs" />
+    <Compile Include="Services\Interfaces\IEventAreaService.cs" />
+    <Compile Include="Services\Interfaces\IEventSeatService.cs" />
+    <Compile Include="Services\Interfaces\IEventService.cs" />
+    <Compile Include="Services\Interfaces\ILayoutService.cs" />
+    <Compile Include="Services\Interfaces\ISeatService.cs" />
+    <Compile Include="Services\Interfaces\IVenueService.cs" />
+    <Compile Include="Services\LayoutService.cs" />
+    <Compile Include="Services\SeatService.cs" />
+    <Compile Include="CustomExceptions\UnsuitableDateTimeException.cs" />
+    <Compile Include="Services\VenueService.cs" />
+    <Compile Include="ValidationAttributes\RowAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TicketManagement.DataAccess\TicketManagement.DataAccess.csproj">
+      <Project>{f3fb2891-8d14-47eb-a4a6-5acce066408c}</Project>
+      <Name>TicketManagement.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper">
+      <Version>10.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
