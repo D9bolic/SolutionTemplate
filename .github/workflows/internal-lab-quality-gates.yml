@@ -19,7 +19,7 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.2   
       - name: Setup VSTest.exe
         uses: Malcolmnixon/Setup-VSTest@v3	
-      - name: Setup sqlpackage
+      - name: Setup SqlPackage
         uses: coreywebber/setup-sqlpackage@v1.0.0  
       - name: Restore NuGet Packages
         run: nuget restore TicketManagement.sln 
@@ -30,15 +30,6 @@ jobs:
       - name: Database publish
         run: sqlpackage.exe /Action:Publish /TargetDatabaseName:"TicketManagement.Database" /TargetServerName:".\SQLEXPRESS" /SourceFile:".\src\TicketManagement.Database\bin\${{ matrix.configuration }}\TicketManagement.Database.dacpac"  /p:CreateNewDatabase="true"  
       - name: Integration tests
-        run: vstest.console **\*.IntegrationTests.dll 
-      - name: Integration tests
-        run: vstest.console **\*.IntegrationTests.dll     
-      - name: OpenCover Badge Generator
-        uses: danpetitt/open-cover-badge-generator-action@v1.0.9
-        with:
-          path-to-opencover-xml: ./test/opencover.xml
-          path-to-badges: ./
-          minimum-coverage: 75
-          repo-token: ${{ secrets.CI_TOKEN }}
+        run: vstest.console **\*.IntegrationTests.dll  
     
     
