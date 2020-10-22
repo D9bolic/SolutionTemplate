@@ -11,6 +11,8 @@ jobs:
         configuration: [Debug, Release] 
     runs-on: [self-hosted]
     steps:
+      - name: asd
+        run: echo "::set-env name=PATH::${HOME}/miniconda3/bin:${PATH}"
       - uses: actions/checkout@v1
         name: Checkout Code     
       - name: setup-msbuild
@@ -28,7 +30,9 @@ jobs:
       - name: Add sqlpackage to PATH
         uses: coreywebber/setup-sqlpackage@v1.0.0
       - name: Database publish
-        run: sqlpackage.exe /Action:Publish /TargetDatabaseName:"TicketManagement.Database" /TargetServerName:".\SQLEXPRESS" /SourceFile:"${{ env.GITHUB_WORKSPACE }}\src\TicketManagement.Database\bin\${{ matrix.configuration }}\TicketManagement.Database.dacpac"  /p:CreateNewDatabase="true"
+        run: sqlpackage.exe /Action:Publish /TargetDatabaseName:"TicketManagement.Database" /TargetServerName:".\SQLEXPRESS" /SourceFile:"${{ env.GITHUB_WORKSPACE }}\src\TicketManagement.Database\bin\${{ matrix.configuration }}\TicketManagement.Database.dacpac"  /p:CreateNewDatabase="true"  
+      - name: Integration tests
+        run: vstest.console **\*.IntegrationTests.dll 
     
     
     
