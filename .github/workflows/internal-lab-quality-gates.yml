@@ -16,13 +16,13 @@ jobs:
       - name: Setup msbuild
         uses: microsoft/setup-msbuild@v1.0.2    
       - name: Setup NuGet
-        uses: NuGet/setup-nuget@v1.0.2   
+        uses: NuGet/setup-nuget@v1.0.2
+      - name: Restore NuGet Packages
+        run: nuget restore TicketManagement.sln 
       - name: Setup VSTest.exe
         uses: Malcolmnixon/Setup-VSTest@v3	
       - name: Setup SqlPackage
         uses: coreywebber/setup-sqlpackage@v1.0.0  
-      - name: Restore NuGet Packages
-        run: nuget restore TicketManagement.sln 
       - name: Build
         run: msbuild TicketManagement.sln /p:Configuration=${{ matrix.configuration }} 
       - name: Unit tests
